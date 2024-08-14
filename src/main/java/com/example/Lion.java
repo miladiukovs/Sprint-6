@@ -4,19 +4,20 @@ import java.util.List;
 
 public class Lion {
 
-    boolean hasMane;
+    private boolean hasMane;
+    private Feline feline; // Убираем создание экземпляра Feline внутри класса Lion
 
-    public Lion(String sex) throws Exception {
+    // Конструктор принимает экземпляр Feline
+    public Lion(String sex, Feline feline) throws Exception {
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
+            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
+        this.feline = this.feline; // Присваиваем переданный экземпляр
     }
-
-    Feline feline = new Feline();
 
     public int getKittens() {
         return feline.getKittens();
