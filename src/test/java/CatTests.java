@@ -54,6 +54,7 @@ public class CatTests {
     }
 }
 
+
 //надо написать моки на методы
 //getSound
 //getFood
