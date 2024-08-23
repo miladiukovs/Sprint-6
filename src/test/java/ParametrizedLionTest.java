@@ -13,6 +13,7 @@ public class ParametrizedLionTest {
 
     private final String sexTest;
     private final boolean maneTest;
+    private Feline mockFeline;
 
     public ParametrizedLionTest(String sexTest, boolean maneTest) {
         this.sexTest = sexTest;
@@ -29,7 +30,7 @@ public class ParametrizedLionTest {
 
     @Before
     public void setUp() {
-        Feline feline = Mockito.mock(Feline.class);
+        mockFeline = Mockito.mock(Feline.class);
     }
 
     @Mock
@@ -38,7 +39,7 @@ public class ParametrizedLionTest {
 
     @Test
     public void sexTest() throws Exception {
-        Lion lion = new Lion(sexTest); // Передаем мок в конструктор
+        Lion lion = new Lion(sexTest, mockFeline); // Передаем мок в конструктор
         Assert.assertEquals(maneTest, lion.doesHaveMane());
     }
 }
