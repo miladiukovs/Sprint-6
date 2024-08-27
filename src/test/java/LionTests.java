@@ -21,17 +21,7 @@ public class LionTests {
         // Создаем мок-объект для Feline
         mockFeline = Mockito.mock(Feline.class);
         // Создаем экземпляр Lion, передавая мок-объект
-        lion = new Lion("Самец", mockFeline) {
-            @Override
-            public int getKittens() {
-                return mockFeline.getKittens();
-            }
-
-            @Override
-            public List<String> getFood() throws Exception {
-                return mockFeline.getFood("Хищник");
-            }
-        };
+        lion = new Lion("Самец", mockFeline);
     }
 
     @Test
@@ -58,8 +48,6 @@ public class LionTests {
     public void testGetKittens() {
         // Настраиваем мок-объект для метода getKittens
         when(mockFeline.getKittens()).thenReturn(3);
-
-        // Проверяем, что метод getKittens возвращает ожидаемое значение
         assertEquals(3, lion.getKittens());
     }
 
@@ -69,8 +57,6 @@ public class LionTests {
         // Настраиваем мок-объект для метода getFood
         List<String> expectedFood = Arrays.asList("Мясо", "Птица", "Рыба");
         when(mockFeline.getFood("Хищник")).thenReturn(expectedFood);
-
-        // Проверяем, что метод getFood возвращает ожидаемое значение
         assertEquals(expectedFood, lion.getFood());
     }
 
@@ -83,7 +69,6 @@ public class LionTests {
         Exception exception = assertThrows(Exception.class, () -> {
             lion.getFood();
         });
-
         assertEquals("Ошибка получения пищи", exception.getMessage());
     }
 }

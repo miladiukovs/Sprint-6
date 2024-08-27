@@ -7,10 +7,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 
-public class FelineTests {
-
     @RunWith(MockitoJUnitRunner.class)
-    public class EatMeatFelineTest {
+    public class FelineTests {
 
         @Spy
         Feline feline;
@@ -20,7 +18,6 @@ public class FelineTests {
             feline.eatMeat();
             Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
         }
-    }
 
     @Test
     public void testGetFamily() {
